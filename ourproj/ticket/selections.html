@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Buy Ticket</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--<script src="angular.min.js"></script>-->
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootsrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+          <style>select.ng-invalid.ng-dirty{border:1px solid red;}</style>
+    
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Book me Stores</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Sliit</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="showtime.html">Showtimes</a></li>
+      <li><a href="#">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin control
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="addmoviedetails.html">Movie details</a></li>
+          <li><a href="#">Musical events</a></li>
+          <li><a href="#">Stage dramas</a></li>
+        </ul>
+      </li>    
+      
+    </ul>
+  </div>
+</nav>
+
+    <!--//////////////////////////////-->
+    
+<div class="col-md-6 col-md-offset-1">
+    <h1>Buy Ticekt</h1>
+    <h2>Make your Selections</h2>
+<br>
+    <div class="container">
+      <div ng-app="myapp" ng-controller="usercontroller">
+    <form name="form">
+        <div class="form-group" >
+        <label for="Name">Event Type</label>
+
+ <select name="cboName" id="cboName" class="form-control" data-ng-model="Item.Name" required>
+  <span ng-show="form.cobName.$dirty && form.cobName.$error.required">Required!</span>
+
+               <option value=""></option>
+               <option value="Movie">Movie</option>
+               <option value="Stage Drama">Stage Drama</option>
+               <option value="Musical Event">Musical Event</option>
+               </select> 
+         </div>
+
+
+
+ 
+<!--------------///////////////////////////////////////////---------------------------------------->       
+           
+       
+
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" class="form-control" name="date" required ng-model="date" class="form-control"/>
+           
+        </div>
+         
+<!--------------//////////////////////////////////////////----------------------------------------->
+  <script>
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http){
+        $scope.insertData = function(){
+            $http.post(
+                "selec.php",
+                {'Name':$scope.Name,'Event':$scope.Event,'Place':$scope.Place,'SelectCatagory':$scope.SelectCatagory,'Full':$scope.Full,'Half':$scope.Half}
+            ).success(function(data){
+                alert(data);
+            });
+        }
+
+    });
+
+</script>
+
+<!--........................................................................-->
+
+
+        <div class="form-group">
+            <label for="Event">Event</label>
+           <select name="cboEvent" id="cboEvent" class="form-control" data-ng-model="Item.Event" required>
+               <option value=""></option> 
+               <option value="Movies">---Movies----</option>
+               <option value="aloka udapadi">aloka udapadi</option>
+               <option value="hobbit">hobbit</option>
+               <option value="beauty and the beast">beauty and the beast</option>
+               <option value="Stage Dramas">----Stage Dramas----</option>
+               <option value="Ragapama Iwarai">Ragapama Iwarai</option>
+               <option value="Mata Hari Giya">Mata Hari Giya</option>
+               <option value="wikurthi Mnasa">wikurthi Mnasa</option>
+               <option value="Musical Events">------Musical Events-----</option>
+               <option value="saga">saga</option>
+               <option value="bathiya and santhush live">bathiya and santhush live</option>
+               <option value="aghasyaya">aghasyaya</option>
+               <option value="sarigama">sarigama</option>
+           </select>   
+        </div>
+     
+
+          
+
+        <div class="form-group">
+               <label for="Place">Theater or place</label>
+             <select name="cboPlace" id="cboPlace" class="form-control" data-ng-model="Item.Place" required>
+               <option value=""></option>
+               <option value="Movies">---Movies----</option>
+               <option value="Regal">Regal</option>
+               <option value="Skilight">Skilight</option>
+               <option value="----Stage Dramas----">-----Stage Dramas------</option>
+               <option value="Nelumpokuna">Nelumpokuna</option>
+               <option value="Tawaer Ragahala">Tawaer Ragahala</option>
+               <option value=""></option>
+               <option value="----Musical Events----">------Musical Events------</option>
+               <option value="Nelumpokuna">Nelumpokuna</option>
+               <option value="AAC Hall">AAC Hall</option>
+              
+            </select>
+         </div>
+
+           
+            <div class="form-group">
+            <label for="ShowTime">Show Time</label>
+        <select name="cboShowTime" id="cboShowTime" class="form-control" data-ng-model="Item.ShowTime" required>
+                 <option value=" "> </option>
+                 <option value="10.30 am">10.30</option>
+                 <option value="1.30 pm">1.30</option>
+                 <option value="4.30 pm">4.30</option>
+         </div>
+     </select>
+
+     <br>
+
+       <div class="form-group">
+               <label for="SelectCatagory">Select Catagory</label>
+             <select name="cboSelectCatagory" id="cboSelectCatagory" class="form-control" data-ng-model="Item.SelectCatagory" required>
+               <option value=""></option>
+               <option value="ODC">ODC</option>
+               <option value="Normal">Normal</option>
+               <option value="VIP">VIP</option>
+            </select>
+         </div>
+
+     <div class="form-group">
+               <label for="Full">Full</label>
+             <select name="cboFull" id="cboFull" class="form-control" data-ng-model="Item.Full" required>
+               <option value=""></option>
+              <option value="01">01</option>
+  <option value="02">02</option>
+  <option value="03">03</option>
+  <option value="04">04</option>
+  <option value="05">05</option>
+  <option value="06">06</option>
+  <option value="07">07</option>
+  <option value="08">08</option>
+  <option value="09">09</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+            </select>
+         </div>
+
+              <div class="form-group">
+               <label for="Half">Half</label>
+             <select name="cboHalf" id="cboHalf" class="form-control" data-ng-model="Item.Half" required>
+               <option value=""></option>
+              <option value="01">01</option>
+  <option value="02">02</option>
+  <option value="03">03</option>
+  <option value="04">04</option>
+  <option value="05">05</option>
+  <option value="06">06</option>
+  <option value="07">07</option>
+  <option value="08">08</option>
+  <option value="09">09</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+            </select>
+         </div>
+
+     </div>
+    
+      
+        
+
+         
+
+       
+        <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+            <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+        </div>-->
+
+              <br />
+                   <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="ADD"/>
+                </div>
+        <br>
+       
+         <div class="container navbar-fixed-bottom" style="margin-bottom:10px">
+            <a class="btn btn-warning btn-lg pull-right h1" id="btn2" href="./home.html">Back</a>
+        </div>
+
+           <div>  
+          <button ng-disabled="form.$invalid" class="btn btn-success" type="button" id="addButton" onclick="window.location.href='seat1.html'">
+                                                  <span class="glyphicon glyphicon-plus">&nbsp</span>Next
+                       </button>
+        </div> 
+    </form>
+    <script src=>"http://code.angularjs.org/1.2.3/angular.min.js"</script>
+</div>
+  
+<footer>
+
+</footer>
+<!-- Latest compiled and minified JS -->
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

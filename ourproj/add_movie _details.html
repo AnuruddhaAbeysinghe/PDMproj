@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Registrartion</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="#">Book me Stores</a>
+            </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Sliit</a></li>
+            </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+    <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="#">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+    </ul>
+  </div>
+</nav>
+    <!--/////////////end of navbars/////////////////-->
+
+
+<div class="col-md-6 col-md-offset-2 ">
+    <h2>Add movie details</h2>
+    <div ng-app="myapp" ng-controller="usercontroller">
+    <form name="form"  >
+        <div class="form-group" >
+            <label for="Movie Name">Movie Name</label>
+  
+            <input type="text" class="form-control" name="movie_name" required ng-model="movie_name" class="form-control"/>
+            
+
+        </div>
+        
+        <div class="form-group" >
+            <label for="Theaters">Theaters</label>
+            <input type="text" class="form-control" name="theater" required ng-model="theater" class="form-control"/>
+        </div>
+        <div class="form-group"  >
+            <label for="show_time" >Show times</label><br>
+             <input type="checkbox" name="Show times" value="10.00 AM" > 10.00 AM<br>
+             <input type="checkbox" name="Show times" value="1.15 PM" checked> 1.15 PM<br>
+            <input type="checkbox" name="Show times" value="4.15 PM" checked> 4.15 PM<br>
+            <input type="checkbox" name="Show times" value="7.30 PM" checked> 7.30 PM<br>
+            <input type="checkbox" name="Show times" value="10.15 PM" checked> 10.15 PM<br>
+        </div>
+        <div class="form-group" >
+            <label for="screen_date">Screen date</label><br>
+            <input type="text" class="form-control" name="screen_date" required ng-model="screen_date" class="form-control"/>
+        </div>
+        <div class="form-group" >
+            <label for="running_time">Running time</label>
+            <input type="text" class="form-control" name="running_time" required ng-model="running_time" class="form-control"/>
+        </div>
+        <div class="form-group" >
+            <label for="director_name">Director Name</label>
+            <input type="text" class="form-control" name="director_name" required ng-model="director_name" class="form-control"/>
+        </div>
+        <div class="form-group" >
+            <label for="description">Description</label>
+           <br><textarea cols="89" rows="10" name="mes"></textarea><br>
+        </div>
+        <div class="form-group">
+         <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="ADD"/>        
+        </div>
+        
+        
+          <script>
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http){
+        $scope.insertData = function(){
+            $http.post(
+                "add_movie_details.php",
+                {'movie_name':$scope.movie_name, 'theater':$scope.theater,'screen_date':$scope.screen_date,'running_time':$scope.running_time,'director_name':$scope.director_name}
+            ).success(function(data){
+                alert(data);
+            });
+        }
+
+    });
+
+</script>
+
+        
+        
+
+   
+<body ng-app="main-App" ng-controller="AdminController">
+
+	<!-- Form Start -->
+	<form ng-submit="submit()" name="form" role="form">
+
+	  <input ng-model="form.image" type="file" class="form-control input-lg" accept="image/*" onchange="angular.element(this).scope().uploadedFile(this)" style="width:400px" >
+	  <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="Upload"/>
+	  <br/>
+	  <img ng-src="{{image_source}}" style="width:650px;" style="height:400px;">
+
+	</form>
+	<!-- Form End -->
+
+	<script type="text/javascript">
+
+	    var app =  angular.module('main-App',[]);
+
+	    app.controller('AdminController', function($scope, $http) {
+
+	      $scope.form = [];
+	      $scope.files = [];
+
+	      $scope.submit = function() {
+	      	$scope.form.image = $scope.files[0];
+
+	      	$http({
+			  method  : 'POST',
+			  url     : '/upload.php',
+			  processData: false,
+			  transformRequest: function (data) {
+			      var formData = new FormData();
+			      formData.append("image", $scope.form.image);  
+			      return formData;  
+			  },  
+			  data : $scope.form,
+			  headers: {
+			         'Content-Type': undefined
+			  }
+		   }).success(function(data){
+		        alert(data);
+		   });
+
+	      };
+
+	      $scope.uploadedFile = function(element) {
+		    $scope.currentFile = element.files[0];
+		    var reader = new FileReader();
+
+		    reader.onload = function(event) {
+		      $scope.image_source = event.target.result
+		      $scope.$apply(function($scope) {
+		        $scope.files = element.files;
+		      });
+		    }
+                    reader.readAsDataURL(element.files[0]);
+		  }
+
+	    });
+	</script>
+
+</body>
+
+
+    </form>
+    </div>
+
+    </div>
+    </body>
+</html>

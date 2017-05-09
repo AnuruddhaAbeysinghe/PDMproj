@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>offer-family</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="http://ajex.googleapis.com/ajex/libs/angularjs/1.6.4/angular,min.js"></script>
+    <style>select.ng-invalid.ng-dirty{border:1px solid red}</style>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Book me Stores</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Sliit</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="showtime.html">Showtimes</a></li>
+      <li><a href="#">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin control
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="addmoviedetails.html">Movie details</a></li>
+          <li><a href="#">Musical events</a></li>
+          <li><a href="#">Stage dramas</a></li>
+        </ul>
+      </li>    
+      
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="text-center">
+            <div class="page-header">
+                <h1 class="text-muted">Family<br/>Offers</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="background: #2651a8;color: #c8c8c8;">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding:5px; text-align: center">
+                <h3 class="text-center">Conditions</h3>
+
+                <div style="padding: 10px 0;">
+                    <ul>
+                        <li> For family offer,you should get more than 10 tickets.</li>
+            
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding:5px">
+                <h3 class="text-center">Offer Details</h3>
+
+                <div style="padding: 10px 0;">
+                    <li>This offer would be aplicable for Movie tickets,Stage Drama tickets and 
+                         Musical Event tickets.(Offer is available for any 
+                        category)</li>
+                    <li>Available only on Last weekend of the month.</li>
+                        
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding:5px">
+                <h3 class="text-center">Discount</h3>
+
+                <div style="padding: 10px 0;">
+                    <li>Movie tickets            - 10% </li>
+                    <li>Stage Drama tickets      - 10% </li>
+                    <li>Musical Event tickets    - One half price ticket</li>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:5px">
+                <button class="btn btn-default btn-lg center-block h1" data-toggle="modal" data-target="#myModal"
+                        style="width:30%;white-space:normal; border-radius: 0px">Get Offer
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container navbar-fixed-bottom" style="margin-bottom:10px">
+    <a class="btn btn-warning btn-lg pull-right h1" href="./index.html">Back</a>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="border-radius: 0">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Get Offer</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Event Type</label>
+
+                        <div class="col-sm-10">
+                            <select id="ticket" class="form-control" style="border-radius: 0" data-ng-model="Item.Place" required>
+                                <option value=" "></option>
+                                <option value="Film">Movie</option>
+                                <option value="Stage Drama">Stage Drama</option>
+                                <option value="Concert Ticket">Musical Event</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Quantity</label>
+
+                        <div class="col-sm-10">
+                            <input id="qty" type="integer number" class="form-control" style="border-radius: 0">
+                            
+                     
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div id="offer-view" class="text-center" style="display: none;">
+                    <h3 class="text-success">Congratulations!</h3>
+
+                    <h4 id="offer-details" class="text-success"></h4>
+                </div>
+
+                <h3 id="no-offer" class="text-danger text-center" style="display: none;">Sorry...No offers for
+                    today</h3>
+
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button id="btnCheck" type="button" class="btn btn-success" style="border-radius: 0; ">Check for Offers!
+                   
+                </button>
+           
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+    $('#btnCheck').click(function () {
+
+        var ticket = $('#ticket').val();
+
+        var qty = $('#qty').val();
+
+        switch (ticket) {
+            case 'Film':
+                if (qty > 10) {
+                   
+
+                    $('#offer-details').html('You have got 10% discount.');
+                    $('#offer-view').slideDown(500);
+                } else {
+                    $('#no-offer').slideDown(200);
+                }
+                break;
+            case  'Stage Drama':
+                if (qty > 10) {
+                    $('#offer-details').html('You have got 10% discount.');
+                    $('#offer-view').slideDown(500);
+                } else {
+                    $('#no-offer').slideDown(200);
+                }
+                break;
+            case 'Concert Ticket':
+                if (qty > 10) {
+                    $('#offer-details').html('You have won one half price ticket.');
+                    $('#offer-view').slideDown(500);
+                }
+                break;
+        }
+    });
+    
+
+    $("#myModal").on("shown.bs.modal", function () {
+    });
+
+</script>
+
+</body>
+</html>

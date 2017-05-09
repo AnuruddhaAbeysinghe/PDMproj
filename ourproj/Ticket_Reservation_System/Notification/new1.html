@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Testing Data</title>
+
+        <script src="angular.min.js"></script>
+        <!--<script src="js/angular.min.js"></script>-->
+        <!--<link rel="stylesheet" href="css/bootsrap.min.css" />-->
+        
+    </head>
+
+    <body>
+        <br/><br/>
+        <div class="container" style="width:500px">
+            <h3 align="center">Data table</h3>
+
+                <div ng-app="myapp" ng-controller="usercontroller" ng-init="displayData()" >
+                   <table class="table table-bordered">
+                       <tr>
+                           <th>Offer type</th>
+                           <th>Discount</th>
+                           
+                           
+                       </tr>
+
+                       <tr>
+                           <tr ng-repeat="x in names">
+                            <td>{{x.offer_type}}</td>
+							<td>{{x.discount}}</td>
+                            
+                            
+                       </tr>
+                   </table>
+
+                </div>
+
+
+        </div>
+    </body>
+</html>
+
+<script>
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http){
+        
+        console.log('Angular js');
+		
+        $scope.displayData = function(){
+            console.log('Angular js 2');
+            $http.get("select.php")
+            .then(function(response){
+                console.log('Angular js 3');
+                $scope.names = response.data.records;
+                console.log('working : '+ response.data.records);
+                
+            });
+
+        }
+
+    });
+
+</script>

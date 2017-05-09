@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--Script Reference[1]-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+        <script src="angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="chart.css">
+</head>
+<body>
+      <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="#">Book me Stores</a>
+            </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Sliit</a></li>
+            </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+    <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="#">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+    </ul>
+  </div>
+</nav>
+    
+    
+    <body ng-app="main-App" ng-controller="AdminController">
+  <!--Chart Placement[2]-->
+  <div id="chartDiv"></div>
+  <script>
+    var chartData = {
+      type: "bar",  // Specify your chart type here.
+      title: {
+        text: "Popular movies in april - 2017" // Adds a title to your chart
+      },
+      legend: {}, // Creates an interactive legend
+        
+     scaleX: {
+    label:{
+      text:"Here is a category scale"
+    },
+    labels:["Kong","Beauty and the beast","Bandanaya","Aloko udapadi"] 
+  },  
+         scaleY: {
+    label:{
+      text:"Number of wivers"
+    }
+    },
+        
+      series: [  // Insert your series data here.
+          { values: [50, 42, 67, 456],
+          text:"viewers"
+          },
+     
+      ]
+    };
+    zingchart.render({ // Render Method[3]
+      id: "chartDiv",
+      data: chartData,
+      height: 400,
+      width: 600
+    });
+        </script>
+      
+      <div id="chartRating"></div>
+  <script>
+    var chartData = {
+      type: "bar",  // Specify your chart type here.
+      title: {
+        text: "Ratings of movies in april - 2017" // Adds a title to your chart
+      },
+      legend: {}, // Creates an interactive legend
+        
+     scaleX: {
+    label:{
+      text:"Here is a category scale"
+    },
+    labels:["Kong","Beauty and the beast","Bandanaya","Aloko udapadi"] 
+  },  
+         scaleY: {
+    label:{
+      text:"Number of wivers"
+    }
+    },
+    
+        
+      series: [  // Insert your series data here.
+          { values: [356, 423, 67, 456],text:"1 star"},
+          { values: [123, 42, 156, 45],text:"2 stars"},
+          { values: [263, 42, 67, 96],text:"3 stars"},
+          { values: [50, 125, 67, 4],text:"4 stars"},
+          { values: [423, 42, 200, 206],text:"5 stars"},
+      ]
+    };
+    zingchart.render({ // Render Method[3]
+      id: "chartRating",
+      data: chartData,
+      height: 400,
+      width: 650
+    });
+      
+      
+      
+      
+  </script>
+</body>
+    </body>
+</html>

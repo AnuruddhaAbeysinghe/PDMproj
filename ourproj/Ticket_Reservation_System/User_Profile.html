@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <title>User Profile</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/tt/angular.min.js"></script>
+
+
+
+    <!--.....RATING RESOURCES..........................................................-->
+    <!--<script data-require="angular.js@*" data-semver="1.5.0" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>-->
+    <script src="https://code.angularjs.org/1.5.0/angular-animate.min.js"></script>
+    <script src="https://code.angularjs.org/1.5.0/angular-aria.min.js"></script>
+    <script src="js/angular-material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/jk-rating-stars.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/jk-rating-stars.min.js"></script>
+    <script src="js/script.js"></script>
+
+
+
+    <!--.....................................................................-->
+
+</head>
+
+
+<body onload="load_home(),load_Offer()">
+
+    <script>
+
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http) {
+
+    $scope.stars = 0;
+    $scope.setStars = function(value){
+        $scope.stars = value;
+    };
+    $scope.litStars = function(value){
+        if($scope.stars>=value){
+           return { "background-color" : "yellow" };
+        }
+        else {
+           return { "background-color" : "white" };
+        }
+    };
+
+
+       $scope.firstRate = 0;
+    $scope.secondRate = 3;
+    $scope.readOnly = true;
+    $scope.onItemRating = function(rating){
+      alert('On Rating: ' + rating);
+    };
+
+    });
+
+</script>
+
+
+<!--////////////Header File/////////////////////-->
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Book me Stores</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Sliit</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="Profile_Setting.html"><span class="glyphicon glyphicon-log-in"></span> Profile Setting</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="showtime.html">Showtimes</a></li>
+      <li><a href="OffersNew/index.html">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">control
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="addmoviedetails.html">Movie details</a></li>
+          <li><a href="#">Musical events</a></li>
+          <li><a href="#">Stage dramas</a></li>
+        </ul>
+      </li>    
+      
+    </ul>
+  </div>
+</nav>
+
+<!--//////////////////////////////-->
+
+
+<div class="col-sm-4">
+    <img src="images/dummyMan.png">
+</div>
+<div class="col-sm-5">
+    <input type='hidden' name='username' value='<?php echo "$username";?>'/>
+    <h1>Welcome <?php echo $_POST['username'] ?></h1>
+</div>
+<div class="col-sm-5">
+    <span>
+        <ul><li><h2>History</h2></li></ul>
+        <div id="topBar"> <a href ="#" onclick="load_home()"  > History </a> </div>
+        <div id ="content1" > </div>
+      <script>
+        function load_home() {
+          document.getElementById("content1").innerHTML='<object type="text/html" data="History/new1.html" style="width:500px; height:200px;"></object>';
+        }
+        </script>
+
+      </span>
+</div>
+<div class="col-sm-4">
+</div>
+<div class="col-sm-5">
+    <span>
+          <ul><h2><li>Notifications</li></h2></ul>
+          <div id="newTab"> <a href ="#" onclick="load_Offer()"> Offer </a> </div>
+          <div id ="content2"> </div>
+          <script>
+            function load_Offer() {
+                document.getElementById("content2").innerHTML='<object type="text/html" data="Notification/new1.html" style="width:500px; height:200px;"></object>';
+                }
+                </script>
+    </span>
+</div>
+<div class="col-sm-4">
+</div>
+<div class="col-sm-5">
+    <span>
+          <ul><h2><li>Rating ability</li></h2></ul>
+
+            <div class="container" >
+                   <div class="col-sm-6">
+    <!--///////////////////////////////////////////////-->
+
+     <div ng-app="">
+  <div ng-controller="MyCtrl" style="padding: 20px" >
+      <lable for="Ratings">Choose event: </label>
+             <select name="rate" class="form-control" id="rating" data-ng-model="Item.Name">
+               <option value="0" selected="selected">Select event: </option>
+               <option value="1" >Aloko Udapadi </option>
+               <option value="2" >Logon </option>
+               <option value="3" >Beauty and the beast </option>
+               <option value="4" >Raaize </option>
+               <option value="5" >Fast&Furious </option>
+             </select>
+    <div layout="column">
+      <h3>Rate here</h3>
+      <jk-rating-stars rating="firstRate" >stars</jk-rating-stars>
+      <div style="width: 100px">{{firstRate}} Stars</div>
+      <!--<h3>10 Stars</h3>
+      <jk-rating-stars max-rating="10" rating="secondRate" ></jk-rating-stars>
+      <div style="width: 100px">{{secondRate}} Stars</div>
+      <h3>Read only</h3>
+      <jk-rating-stars rating="secondRate" read-only="readOnly" ></jk-rating-stars>
+      <div style="width: 100px">{{secondRate}} Stars</div>
+      <h3>With callbacks</h3>
+      <jk-rating-stars
+              max-rating="7"
+              rating="secondRate"
+              on-rating="onItemR ating(rating)">
+      </jk-rating-stars>
+      <div style="width: 100px">{{secondRate}} Stars</div>
+      <h3>With cusomt style</h3>
+      <jk-rating-stars
+              class="my-custom-stars"
+              rating="secondRate" >
+      </jk-rating-stars>-->
+      
+      <button class="btn btn-button col-sm-6" type="button" >Rate</button>
+
+      <input id="rate" type="hidden" name="rate" />
+    </div>
+</div>
+     </div>
+
+
+
+  <!--/////////////////////////////////////////////////-->
+        </div>
+            </div>
+
+    </span>
+
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>gggg</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootsrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+
+    <body>
+        <br/><br/>
+        <div class="container" style="width:500px">
+            <h3 align="center">Insrt data</h3>
+
+                <div ng-app="myapp" ng-controller="usercontroller">
+                   <lable>First Name: </lable>
+                   <input type="text" name="first_name" ng-model="firstname" class="form-control" /> 
+                   <br />
+                   <lable>Last Name: </lable>
+                   <input type="text" name="last_name" ng-model="lastname" class="form-control" /> 
+                   <br />
+                   <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="ADD"/>
+                </div>
+
+
+        </div>
+    </body>
+</html>
+
+<script>
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http){
+        $scope.insertData = function(){
+            $http.post(
+                "insert.php",
+                {'firstname':$scope.firstname, 'lastname':$scope.lastname}
+            ).success(function(data){
+                alert(data);
+            });
+        }
+
+    });
+
+</script>

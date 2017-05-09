@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Testing Data</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootsrap.min.css" />
+        <script src="js/tt/angular.min.js"></script>
+        <!--<script src="js/angular.min.js"></script>-->
+        <!--<link rel="stylesheet" href="css/bootsrap.min.css" />-->
+        
+    </head>
+
+    <body>
+        <br/><br/>
+        <div class="container" style="width:500px">
+            <h3 align="center">Insrt data</h3>
+
+                <div ng-app="myapp" ng-controller="usercontroller" ng-init="displayData()" >
+                   <lable>First Name: </lable>{{ 1+2 }}
+                   <input type="text" name="first_name" ng-model="firstname" class="form-control" /> 
+                   <br />
+                   <lable>Last Name: </lable>
+                   <input type="text" name="last_name" ng-model="lastname" class="form-control" /> 
+                   <br />
+                   <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="ADD"/>
+
+                   <table class="table table-bordered">
+                       <tr>
+                           <th>First Name</th>
+                           <th>Last Name</th>
+                       </tr>
+
+                       <tr>
+                           <tr ng-repeat="x in names">
+                            <td>{{x.first_name}}</td>
+                            <td>{{x.last_name}}</td>
+                       </tr>
+                   </table>
+
+                </div>
+
+
+        </div>
+    </body>
+</html>
+
+<script>
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http){
+        $scope.insertData = function(){
+            
+
+            $scope.displayData();
+            // $http.post(
+            //     "insert.php",
+            //     {'firstname':$scope.firstname, 'lastname':$scope.lastname}
+            // ).then(function(data){
+            //     alert(data);
+            //     $scope.firstname = null;
+            //     $scope.lastname = null;
+            //     $scope.displayData();
+            // });
+        }
+        console.log('Angular js');
+        $scope.displayData = function(){
+            console.log('Angular js 2');
+            $http.get("select.php")
+            .then(function(data){
+                console.log('Angular js 3');
+                //$scope.names = data;
+                console.log('working : '+data);
+                
+            });
+
+        }
+
+    });
+
+</script>

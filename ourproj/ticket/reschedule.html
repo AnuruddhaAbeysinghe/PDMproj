@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Reschdule</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!--<script src="angular.min.js"></script>-->
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootsrap.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+         <style>select.ng-invalid.ng-dirty{border:1px solid red;}</style>
+    
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Book me Stores</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Sliit</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="showtime.html">Showtimes</a></li>
+      <li><a href="#">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin control
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="addmoviedetails.html">Movie details</a></li>
+          <li><a href="#">Musical events</a></li>
+          <li><a href="#">Stage dramas</a></li>
+        </ul>
+      </li>    
+      
+    </ul>
+  </div>
+</nav>
+
+    <!--//////////////////////////////-->
+    
+<div class="col-md-6 col-md-offset-1">
+    <h2>Reshdule the Booking</h2>
+    <div class="container">
+      <div ng-app="myapp" ng-controller="usercontroller">
+    <form name="form">
+        <div class="form-group" >
+            <label for="ReservationId">Enter your Reservation ID</label>
+            <input type="text" class="form-control" name="ReservationId"  required ng-model="ReservationId" class="form-control" />
+            <span ng-show="form.ReservationId.$dirty && form.ReservationId.$error.required">Required!</span>
+        </div>
+
+          <div>
+                   <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="ADD"/>
+                </div>
+          <br>
+       
+
+  <script>
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http){
+        $scope.insertData = function(){
+            $http.post(
+                "UserReg.php",
+                {'firstname':$scope.firstname, 'lastname':$scope.lastname,'username':$scope.username,'password':$scope.password,'dob':$scope.dob,'email':$scope.email,'phoneNo':$scope.phoneNo}
+            ).success(function(data){
+                alert(data);
+            });
+        }
+
+    });
+
+</script>
+
+<!--........................................................................-->
+
+
+        <div class="form-group">
+            <label for="Name">Event type</label>
+            <input ng-disabled="form.$invalid" type="text" class="form-control" name="username" required ng-model="username" class="form-control"/>
+            
+        </div>
+      
+        <div class="form-group">
+            <label for="Event">Event</label>
+            <input ng-disabled="form.$invalid" type="password" class="form-control" name="password" required ng-model="password" class="form-control"/>
+            
+        </div>
+
+          <div class="form-group">
+            <label for="Place">Theater or place</label>
+            <input ng-disabled="form.$invalid" type="text" class="form-control" name="dob" required ng-model="dob" class="form-control"/>
+           
+        </div>
+
+          <div class="form-group">
+            <label for="Category">Category</label>
+            <input ng-disabled="form.$invalid" type="email" class="form-control" name="email" required ng-model="email" class="form-control"/>
+            
+        </div>
+
+          <div class="form-group">
+            <label for="Full">Full</label>
+            <input ng-disabled="form.$invalid" type="phoneNo" class="form-control" name="phoneNo" required ng-model="phoneNo" class="form-control"/>
+            
+        </div>
+
+             <div class="form-group">
+            <label for="Half">Half</label>
+            <input ng-disabled="form.$invalid" type="phoneNo" class="form-control" name="phoneNo" required ng-model="phoneNo" class="form-control"/>
+            
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" class="form-control" name="date" required ng-model="date" class="form-control"/>
+           
+        </div>
+
+                   <div class="form-group">
+            <label for="ShowTime">Show Time</label>
+        <select name="cboShowTime" id="cboShowTime" class="form-control" data-ng-model="Item.cboShowTime" required>
+                 <option value=" "> </option>
+                 <option value="10.30 am">10.30</option>
+                 <option value="1.30 pm">1.30</option>
+                 <option value="4.30 pm">4.30</option>
+         
+          </select>
+
+                   </div>
+         
+
+       
+        <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+            <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+        </div>-->
+
+            <div>
+                   <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="Reschdule Booking"/>
+                </div>
+
+                         <div class="container navbar-fixed-bottom" style="margin-bottom:10px">
+            <a class="btn btn-warning btn-lg pull-right h1" id="btn2" href="./home.html">Back</a>
+        </div>
+
+
+          <br>  
+       
+       
+    </form>
+   
+</div>
+  
+<footer>
+
+</footer>
+
+</body>
+</html>

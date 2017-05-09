@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Registrartion</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="myapp" ng-controller="usercontroller">
+    <nav class="navbar navbar-inverse ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                <a class="navbar-brand" href="#">Book me Stores</a>
+            </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Sliit</a></li>
+            </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+        </div>
+        </div>
+    </nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+    <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="#">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+    </ul>
+  </div>
+</nav>
+    <!--/////////////end of navbars/////////////////-->
+
+
+<div class="col-md-6 col-md-offset-2 ">
+    <h2>Add movie details</h2>
+    <form name="form"  >
+        <div class="form-group" >
+            <label for="Movie Name">Movie Name</label>
+            <input type="text" class="form-control" name="movie_name"  ng-model="moviename" class="form-control"/>
+        </div>
+        
+        <div class="form-group" >
+            <label for="Theaters">Theaters</label>
+            <input type="text" class="form-control" name="theater"  ng-model="theater1" class="form-control"/>
+        </div>
+        <div class="form-group"  >
+            <label for="show_time" >Show times</label><br>
+             <input type="checkbox" name="Show times" value="10.00 AM" > 10.00 AM<br>
+             <input type="checkbox" name="Show times" value="1.15 PM" > 1.15 PM<br>
+            <input type="checkbox" name="Show times" value="4.15 PM" > 4.15 PM<br>
+            <input type="checkbox" name="Show times" value="7.30 PM" > 7.30 PM<br>
+            <input type="checkbox" name="Show times" value="10.15 PM" > 10.15 PM<br>
+        </div>
+        <div class="form-group" >
+            <label for="screen_date">Screen date</label><br>
+            <input type="date" class="form-control" name="screen_date"  ng-model="screendate1" class="form-control"/>
+        </div>
+        <div class="form-group" >
+            <label for="running_time">Running time</label>
+            <input type="text" class="form-control" name="running_time"  ng-model="running_time" class="form-control"/>
+        </div>
+                <div class="form-group" >
+            <label for="running_time">Full ticket price</label>
+            <input type="text" class="form-control" name="running_time"  ng-model="full" class="form-control"/>
+        </div>
+                <div class="form-group" >
+            <label for="running_time">Half ticket price</label>
+            <input type="text" class="form-control" name="running_time"  ng-model="half" class="form-control"/>
+        </div>
+                <div class="form-group" >
+            <label for="running_time">VIP ticket price</label>
+            <input type="text" class="form-control" name="running_time"  ng-model="vip" class="form-control"/>
+        </div>
+        
+        
+        <div class="form-group" >
+            <label for="director_name">Director Name</label>
+            <input type="text" class="form-control" name="director_name"  ng-model="directorname1" class="form-control"/>
+        </div>
+        <div class="form-group" >
+            <label for="description">Description</label>
+           <br><textarea cols="89" rows="10" name="mes" input type="text" class="form-control" name="description1"  ng-model="description" class="form-control"></textarea><br>
+        </div>
+        <div class="form-group">
+         <input type="submit" name="btnInsert" class="btn btn-info" ng-click="insertData()" value="Add"/> 
+         <input type="submit" name="btnInsert" class="btn btn-warning pull-right" ng-click="cancelData()" value="Cancel"/>    
+        </div>
+        
+</form>
+</div>
+</div>
+</body>
+</html>
+<script>
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http){
+        $scope.insertData = function(){
+            $http.post(
+                "amd.php",
+                {'moviename':$scope.moviename,'theater1':$scope.theater1,'screendate1':$scope.screendate1,'running_time':$scope.running_time,'full':$scope.full,'half':$scope.half,'vip':$scope.vip,'directorname1':$scope.directorname1,'description':$scope.description}
+            ).success(function(data){
+                alert(data);
+            });
+        }
+
+    });
+
+</script>

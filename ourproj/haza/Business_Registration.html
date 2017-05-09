@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title> Business User Registrartion</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+   <style>
+     input.ng-invalid.ng-dirty{border:1px solid red;}
+     </style>
+</head>
+
+<body>
+
+
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Book me Stores</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Sliit</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="#">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+    </ul>
+  </div>
+</nav>
+    
+ <div class="col-md-6 col-md-offset-1">
+    <h2><div>Register</div></h2>
+
+    <div class="container">
+      <div ng-app="myapp" ng-controller="usercontroller">
+    <form name="form">
+        <div class="form-group col-sm-6 col-md-offset-1" >
+            <label for="firstName">Company Name</label>
+            <input type="text" class="form-control" name="first_name"  required ng-model="firstname" class="form-control" />
+            
+        </div>
+        <div class="form-group col-sm-6 col-md-offset-1">
+            <label for="lastName">Company Code</label>
+            <input type="text" class="form-control" name="last_name" required ng-model="lastname" class="form-control"  />
+         
+        </div>
+         
+
+<!--........................................................................-->
+
+
+        <div class="form-group col-sm-6 col-md-offset-1">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" required ng-model="username" class="form-control"/>
+            </br>
+        </div>
+      
+        <div class="form-group col-sm-6 col-md-offset-1">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" required ng-model="password" ng-minlength="5" ng-maxlength="10"class="form-control"/>
+            <span ng-show="form.password.$dirty && $eroor.required">required!</span>
+                 <span ng-show="form.password.$dirty && $eroor.minlength">too short!</span>
+                  <span ng-show="form.password.$dirty && $eroor.maxlength">too long!</span>
+            
+        </div>
+
+       
+          <div class="form-group col-sm-6 col-md-offset-1">
+            <label for="bod">Register date</label>
+            <input type="date" class="form-control" name="dob" required ng-model="dob" class="form-control"/>
+           
+        </div>
+
+          <div class="form-group col-sm-6 col-md-offset-1">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" required ng-model="email" class="form-control"/>
+            <span ng-show="form.email.$dirty && $eroor.required">required!</span>
+                 <span ng-show="form.email.$dirty && $eroor.email">not an email!</span>
+            
+        </div>
+
+          <div class="form-group col-sm-6 col-md-offset-1">
+            <label for="phoneNo">Telephone</label>
+            <input type="phoneNo" class="form-control" name="phoneNo" required ng-model="phoneNo" class="form-control"/>
+            
+        </div>
+        </div>
+</form>
+<form>
+  <div class="form-group col-sm-6 col-md-offset-1" >
+                 <br />
+                 <div>
+                   <input type="submit" name="btnInsert" class="btn btn-primary col-sm-3" ng-click="insertData()" value="ADD"/>
+                </div>
+       
+        <div class="form-group">
+           
+            <button class="btn btn-link col-sm-6" type="button" onclick="window.location.href='homepage.html'">Cancel</button>
+            
+        </div>
+  </div>
+</form>  
+    
+</div>
+  
+<footer>
+
+</footer>
+<!-- Latest compiled and minified JS -->
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+  <script>
+    var app = angular.module("myapp", []);
+    app.controller("usercontroller", function($scope, $http){
+        $scope.insertData = function(){
+            $http.post(
+                "Business_Registration.php",
+                {'firstname':$scope.firstname, 'lastname':$scope.lastname,'username':$scope.username,'password':$scope.password,'dob':$scope.dob,'email':$scope.email,'phoneNo':$scope.phoneNo}
+            ).success(function(data){
+                alert(data);
+            });
+        }
+
+    });
+
+</script>

@@ -1,0 +1,7 @@
+div#chartDiv{
+    
+    float: left;
+    width: 625px;
+    height: 400px;
+    background-color: beige;
+}

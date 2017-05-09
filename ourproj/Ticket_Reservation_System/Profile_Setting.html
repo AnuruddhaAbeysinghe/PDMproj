@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Registrartion</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/angular.min.js"></script>
+    
+</head>
+
+<body>
+ 
+<!--////////////Header File/////////////////////-->
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="homepage.html">Book me Stores</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="ourproj/homepage.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Sliit</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="Ticket_Reservation_System/Login_Details.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="showtime.html">Showtimes</a></li>
+      <li><a href="OffersNew/index.html">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">control
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="addmoviedetails.html">Movie details</a></li>
+          <li><a href="#">Musical events</a></li>
+          <li><a href="#">Stage dramas</a></li>
+        </ul>
+      </li>    
+      
+    </ul>
+  </div>
+</nav>
+
+    <!--//////////////////////////////-->
+    
+<div class="col-sm-2">
+   <img src="images/dummyMan.png">
+   <form ng-submit="submit()" name="form" role="form">
+
+	  <input ng-model="form.image" type="file" class="form-control input-lg" accept="image/*" onchange="angular.element(this).scope().uploadedFile(ticket.html)" style="width:400px" >
+	  <input type="submit" id="submit" value="Submit" />
+	  <br/>
+	  <img ng-src="{{image_source}}" style="width:300px;">
+
+	</form>
+</div>
+
+<div class="col-md-6 col-md-offset-3">
+    <h2>Update profile details</h2>
+    <form name="form">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" placeholder="Anuruddha" required />
+            
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" placeholder="Abeysinghe" required />
+            
+        </div>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" placeholder="AnuruddhaAbeysinghe" required />
+            
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Anuruddha" required />
+            
+        </div>
+
+          <div class="form-group">
+            <label for="bod">Birth date</label>
+            <input type="date" class="form-control" name="bod" placeholder="1993-02-26"required />
+            
+        </div>
+
+          <div class="form-group" >
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" placeholder="Anuruddha@gmail.com"required />
+            
+        </div>
+
+          <div class="form-group" >
+            <label for="phoneNo">phoneNo</label>
+            <input type="phoneNo" class="form-control" name="phoneNo" placeholder="0711111111"required />
+            
+        </div>
+
+         
+
+       
+        <!--<div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
+            <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
+        </div>-->
+
+       
+        <div class="form-group">
+            <button class="btn btn-primary col-md-6" type="button" onclick="window.location.href='User_Profile.html'">Save Details</button>
+            <img *ngIf="loading" />
+            <button class="btn btn-link col-md-6" type="button" onclick="window.location.href='User_Profile.html'">Cancel</button>
+            <!--<a href="../Login_Details.html" class="btn btn-link col-md-6">Cancel</a>-->
+        </div>
+    </form>
+</div>
+
+
+<footer>
+
+</footer>
+<!-- Latest compiled and minified JS -->
+<script src="js/jquery-3.1.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

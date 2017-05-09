@@ -1,0 +1,290 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>offer-family</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="text-center">
+            <div class="page-header">
+                <h1 class="text-muted">Seasonal Package<br/>Offers</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="background: #176f43 ;color: #c8c8c8;">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding:5px; text-align: center">
+                <h3 class="text-center">Conditions</h3>
+
+                <div style="padding: 10px 0;">
+                    <ul>
+                        <li> For New Year offer,You should get more than 10 tickets.</li>
+                        <li> For get Children's day offer a child should below 9 years old.</li>
+                        <li> To get school children offer a child should below 9 years old. </li>
+                        <li> For Christmas day offer ,You should get tickets  more than 10 </li>
+          
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding:5px">
+                <h3 class="text-center">Offer Details</h3>
+
+                <div style="padding: 10px 0;">
+                    <li> New year offer      - On april 13th and 14th</li>
+                    <li> Children's day offer- On October 1st</li>
+                    <li> Christmas day offer - On December 25th</li>
+                    <li> This offer would be aplicable for Movie tickets,Stage Drama tickets and 
+                         Musical Event tickets.(Offer is available for any 
+                        category)</li>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding:5px">
+                <h3 class="text-center">Discount</h3>
+
+                <div style="padding: 10px 0;">
+                    <li> New year offer Movie tickets                     -10%</li>
+                    <li> New year offer Stage drama tickets               -10%</li>
+                    <li> New year offer Musical Event tickets             -One half price ticket</li>
+                    <li> Children's day offer Movie tickets               -free</li>
+                    <li> Children's day offer Stage Drama tickets         -free</li>
+                    <li> Children's day offer Musical Event tickets       -free</li>
+                    <li> Children's day offer(came from school) for any category -15%</li>
+                    <li> Christmas day offer Movie tickets                -10%</li>
+                    <li> Christmas day offer Stage Drama tickets          -10%</li>
+                    <li> Christmas day offer Musical Event tickets        - One half price ticket</li>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:5px">
+                <button class="btn btn-default btn-lg center-block h1" data-toggle="modal" data-target="#myModal"
+                        style="width:30%;white-space:normal; border-radius: 0px">Get Offer
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container navbar-fixed-bottom" style="margin-bottom:10px">
+    <a class="btn btn-warning btn-lg pull-right h1" href="./index.html">Back</a>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="border-radius: 0">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Get Offer</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-horizontal">
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Category</label>
+
+                        <div class="col-sm-10">
+                            <select id="type" class="form-control" style="border-radius: 0">
+                                 <option value=" "></option>
+                                <option value="New Year">New Year</option>
+                                <option value="Children's Day Offer">Children's Day Offer</option>
+                                <option value="Christmas Offer">Christmas Offer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="common-offer">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Event Type</label>
+
+                            <div class="col-sm-10">
+                                <select id="ticket" class="form-control" style="border-radius: 0">
+                                     <option value=" "></option>
+                                    <option value="Film">Movie</option>
+                                    <option value="Stage Drama">Stage Drama</option>
+                                    <option value="Concert Ticket">Musical Event Ticket</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Quantity</label>
+
+                            <div class="col-sm-10">
+                                <input id="qty" type="number" class="form-control" style="border-radius: 0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="children-offer" style="display: none">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2"></label>
+
+                            <div class="col-sm-10">
+                                <label><input id="school-visit" type="checkbox"> School visit</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2">Quantity</label>
+
+                            <div class="col-sm-10">
+                                <input id="age" type="number" class="form-control" style="border-radius: 0">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="offer-view" class="text-center" style="display: none;">
+                    <h3 class="text-success">Congratulations!</h3>
+
+                    <h4 id="offer-details" class="text-success"></h4>
+                </div>
+
+                <h3 id="no-offer" class="text-danger text-center" style="display: none;">Sorry...No offers for
+                    today</h3>
+
+            </div>
+            <div class="modal-footer" style="text-align: center">
+                <button id="btnCheck" type="button" class="btn btn-success" style="border-radius: 0; ">Check for Offers!
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+
+    $('#type').change(function () {
+        switch (this.value) {
+            case 'New Year':
+                $('#common-offer').show();
+                $('#children-offer').hide();
+                break;
+            case 'Children\'s Day Offer':
+                $('#common-offer').hide();
+                $('#children-offer').show();
+                break;
+            case 'Christmas Offer':
+                $('#common-offer').show();
+                $('#children-offer').hide();
+                break;
+        }
+    });
+
+    $('#btnCheck').click(function () {
+
+        var type = $('#type').val();
+
+        var ticket = $('#ticket').val();
+
+        var age = $('#age').val();
+
+        var qty = $('#qty').val();
+
+        switch (type) {
+            case 'New Year':
+
+                switch (ticket) {
+                    case 'Film':
+                        if (qty > 10) {
+                            $('#offer-details').html('You have got 10% discount.');
+                            $('#offer-view').slideDown(500);
+                        } else {
+                            $('#no-offer').slideDown(200);
+                        }
+                        break;
+                    case  'Stage Drama':
+                        if (qty > 10) {
+                            $('#offer-details').html('You have got 10% discount.');
+                            $('#offer-view').slideDown(500);
+                        } else {
+                            $('#no-offer').slideDown(200);
+                        }
+                        break;
+                    case 'Concert Ticket':
+                        if (qty > 10) {
+                            $('#offer-details').html('You have won one half price ticket.');
+                            $('#offer-view').slideDown(500);
+                        }
+                        break;
+                }
+                break;
+            case 'Children\'s Day Offer':
+
+                if (age < 9) {
+                    $('#offer-details').html('You have won free tickets for Children.');
+                    $('#offer-view').slideDown(500);
+                } else if (document.getElementById('school-visit').checked) {
+                    $('#offer-details').html('You have got 15% discount.');
+                    $('#offer-view').slideDown(500);
+                } else {
+                    $('#no-offer').slideDown(200);
+                }
+
+                break;
+            case 'Christmas Offer':
+
+
+                switch (ticket) {
+                    case 'Film':
+                        if (qty > 10) {
+                            $('#offer-details').html('You have got 10% discount.');
+                            $('#offer-view').slideDown(500);
+                        } else {
+                            $('#no-offer').slideDown(200);
+                        }
+                        break;
+                    case  'Stage Drama':
+                        if (qty > 10) {
+                            $('#offer-details').html('You have got 10% discount.');
+                            $('#offer-view').slideDown(500);
+                        } else {
+                            $('#no-offer').slideDown(200);
+                        }
+                        break;
+                    case 'Concert Ticket':
+                        if (qty > 10) {
+                            $('#offer-details').html('You have won one half price ticket.');
+                            $('#offer-view').slideDown(500);
+                        } else {
+                            $('#no-offer').slideDown(200);
+                        }
+                        break;
+                }
+                break;
+        }
+    });
+
+    $("#myModal").on("shown.bs.modal", function () {
+    });
+
+</script>
+
+</body>
+</html>

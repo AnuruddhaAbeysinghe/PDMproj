@@ -1,0 +1,29 @@
+  /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar navbar-inverse {
+      margin-bottom: 0;
+      border-radius: 0;
+        
+        
+    }
+
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #42f4f4;
+      padding: 25px;
+    }
+.jumbotron{
+     background-color: #000000;
+}
+
+
+
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 1000px;
+     height: 400px;
+         margin: auto;
+      
+      
+     
+  

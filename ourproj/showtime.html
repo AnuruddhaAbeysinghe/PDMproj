@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Registrartion</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+</head>
+
+<body>
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Book me Stores</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">Sliit</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Seminars</a></li>
+      <li><a href="showtime.html">Showtimes</a></li>
+      <li><a href="#">Offers</a></li>
+      <li><a href="#">Buy ticket</a></li>
+      <li><a href="#">About us</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin control
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="addmoviedetails.html">Movie details</a></li>
+          <li><a href="#">Musical events</a></li>
+          <li><a href="#">Stage dramas</a></li>
+        </ul>
+      </li>    
+      
+    </ul>
+  </div>
+</nav>
+
+    
+    
+    
+    <div class="col-md-6 col-md-offset-3 ">
+    <div class="container" style="width:600px;">    
+    <h2>Showtime details</h2>
+        
+        <div class="form-group" >
+            <label for="Theaters">Date</label><br>
+            <input type="date" class="form-control" name="Screen date" [(ngModel)]="model.lastName" #lastName="ngModel" placeholder="" required/>
+            
+        </div>
+        
+        <div class="form-group" >
+            <label for="Theaters">Theaters</label><br>
+
+            <select name="theater" id="theater" class="form-control" data-ng-model="Item.Name">
+                <option value="0" selected = "selected">Select Theater</option>
+                <option value="2" >Savoy 2 - Wellawatte</option>
+                <option value="3" >Savoy 3D - Wellawatte</option>
+                <option value="7" >Concord - Dehiwela</option>
+                <option value="8" >Cinemax 3D - Jaela</option>
+                <option value="10" >Willmax 3D - Anuradhapura</option>
+                <option value="11" >Excel 3D - Colombo 10</option>
+                <option value="12" >Queens 3D - Galle</option>
+                <option value="14" >Jothi 3D - Rathnapura</option>
+                <option value="15" >Sinexpo 3D - Kurunegala</option>
+                <option value="16" >Samantha - Damatagoda</option>
+                <option value="19" >Regal - Ambalangoda</option>
+                <option value="20" >Tower - Moratuwa</option>
+                <option value="208" >Savoy Premiere - Wallawatte</option>
+            
+            </select>
+            
+        </div>
+        
+            <div class="form-group" >
+            <label for="Select Show Time">Select Show Time</label><br>
+            <select name="theater" id="theater" class="form-control" data-ng-model="Item.Name">
+            <option value="0" selected = "selected">Select Show Time</option>
+            <option value="1" >7:30 AM</option>
+            <option value="9" >1:00 PM</option>
+            <option value="10" >4:30 AM</option>
+            <option value="11" >7:30 PM</option>
+            <option value="12" >10:15 PM</option>
+            </select>
+            
+        </div>
+        
+        <div class="form-group" >
+            <label for="Movie">Movie</label><br>
+            <output type="text" class="form-control" name="Screen date" [(ngModel)]="model.lastName" #lastName="ngModel" placeholder="" required/>
+            
+        </div>
+            
+        <button type="button" class="btn btn-info">Search</button>
+        
+        
+        
+        
+        
+        
+        </div>
+    </div>
+        
+    
+    
+</body>
+</html>
